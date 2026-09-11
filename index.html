@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suann </title>
+  <title>Ahn Suann Portfolio</title>
   <style>
     * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
-    html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background: #000 url('mainbackground.jpg') center / cover no-repeat fixed; }
+    html, body { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden; background: #fbfef5; }
     button, input { font: inherit; }
     
-    #mainScreen { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; background-color: #e8e5e0; background-image: radial-gradient(ellipse at 18% 16%, rgba(255,255,255,.2), transparent 38%), radial-gradient(ellipse at 82% 74%, rgba(83,76,69,.08), transparent 42%); transition: opacity 2s ease, filter 2s ease, transform 2s ease; }
+    #mainScreen { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; background-color: #fbfef5; background-image: radial-gradient(ellipse at 18% 16%, rgba(255,255,255,.2), transparent 38%), radial-gradient(ellipse at 82% 74%, rgba(83,76,69,.08), transparent 42%); transition: opacity 2s ease, filter 2s ease, transform 2s ease; }
     #mainScreen.melt { opacity: 0; filter: blur(15px); transform: scale(.97); pointer-events: none; }
     
     .frame-container { width: 100%; padding: 24px; display: flex; gap: 50px; justify-content: center; align-items: center; }
@@ -63,7 +63,7 @@
     
     .fate-modal { position: absolute; top: 50%; left: 50%; z-index: 5; display: none; width: min(420px,calc(100vw - 48px)); aspect-ratio: 1; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,.35); border-radius: 24px; background: rgba(0,0,0,.8); color: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.6); transform: translate(-50%,-50%) scale(.9); }
     .fate-modal.open { display: flex; animation: modal-open .3s ease-out forwards; }
-    .fate-modal.portfolio-modal { background: #e8e5e0; color: #171717; }
+    .fate-modal.portfolio-modal { background: #fbfef5; color: #171717; }
     
     .modal-bar { display: flex; gap: 8px; padding: 16px 18px; width: 100%; }
     .window-control { width: 14px; height: 14px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; }
@@ -124,7 +124,6 @@
   
   <section id="cookieScreen">
     <div class="fate-map" id="fateImage">
-      <!-- 파일명은 띄어쓰기 없이 서버에 저장된 것과 일치해야 해 -->
       <img class="fate-image" src="constellation.png" alt="Constellation">
       <button class="planet-hotspot" data-popup="star-one" style="left:53.3%; top:10.1%" aria-label="Star one"></button>
       <button class="planet-hotspot" data-popup="star-two" style="left:44.7%; top:23%" aria-label="Star two"></button>
@@ -238,7 +237,7 @@
 
     const breakCookie = () => { 
       cookieImage.classList.remove('breaking'); 
-      void cookieImage.offsetWidth; // 리플로우 강제 발생으로 애니메이션 재시작
+      void cookieImage.offsetWidth; 
       cookieImage.classList.add('breaking'); 
       fateImage.classList.remove('revealed'); 
       cookieScreen.classList.add('sky-background'); 
@@ -259,7 +258,6 @@
       });
     });
 
-    // 동적으로 생성된 내부 요소들의 이벤트는 modalContent에 걸어야 함
     modalContent.addEventListener('click', (event) => { 
       if (!event.target.closest('.password-button')) return; 
       const input = modalContent.querySelector('.password-input'); 
