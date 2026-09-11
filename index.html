@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SUANN</title>
+  <title>suann</title>
   <style>
     * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
     button, input { font: inherit; }
     #mainScreen { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; background: #e8e5e0; background-image: radial-gradient(ellipse at 18% 16%, rgba(255,255,255,.2), transparent 38%), radial-gradient(ellipse at 82% 74%, rgba(83,76,69,.08), transparent 42%); transition: opacity 2s ease, filter 2s ease, transform 2s ease; }
-    #mainScreen.melt { opacity: 0; filter: blur(15px); transform: scale(.97); }
+    #mainScreen.melt { opacity: 0; filter: blur(15px); transform: scale(.97); pointer-events: none; }
     .frame-container { width: 100%; padding: 24px; display: flex; gap: 50px; justify-content: center; align-items: center; }
     .frame-link { position: relative; display: block; text-decoration: none; cursor: pointer; transition: transform .3s ease; }
     .frame-link img { display: block; width: min(291px, calc((100vw - 98px) / 2)); max-width: 100%; height: auto; transition: opacity .3s ease, filter .3s ease; }
@@ -45,7 +45,7 @@
     .cookie-action { padding: 10px 22px; border: 0; background: transparent; color: #fff; letter-spacing: 2px; cursor: pointer; transition: background .3s, color .3s; }
     .cookie-action:hover { background: #fff; color: #000; }
     .fate-map { position: absolute; z-index: 2; width: min(760px, 88vw); opacity: 0; transform: translateY(-8vh) scale(.72) rotate(-5deg); pointer-events: none; transition: opacity .9s ease, transform .9s ease; }
-    .fate-map.revealed { opacity: 1; transform: translateY(-8vh); pointer-events: auto; }
+    .fate-map.revealed { opacity: 1; transform: translateY(-8vh) scale(1) rotate(0deg); pointer-events: auto; }
     .fate-image { display: block; width: 100%; height: auto; }
     .planet-hotspot { position: absolute; width: clamp(22px,3vw,34px); aspect-ratio: 1; padding: 0; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; background: rgba(255,255,255,.12); box-shadow: 0 0 16px rgba(255,255,255,.75); cursor: pointer; transform: translate(-50%,-50%); }
     .planet-hotspot:hover, .planet-hotspot.active { background: rgba(255,255,255,.35); box-shadow: 0 0 24px #fff; }
@@ -55,12 +55,12 @@
     .modal-bar { display: flex; gap: 8px; padding: 16px 18px; }
     .window-control { width: 14px; height: 14px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; }
     .window-control.close { background: #ff5f57; } .window-control.minimize { background: #ffbd2e; } .window-control.expand { background: #28c840; }
-    .modal-content { display: flex; flex: 1; overflow-y: auto; align-items: center; padding: 28px; font-size: clamp(18px,3vw,26px); letter-spacing: 2px; line-height: 1.5; text-align: center; }
+    .modal-content { display: flex; flex: 1; overflow-y: auto; align-items: center; justify-content: center; padding: 28px; font-size: clamp(18px,3vw,26px); letter-spacing: 2px; line-height: 1.5; text-align: center; }
     .profile-content { width: 100%; font-size: 15px; letter-spacing: .5px; line-height: 1.65; text-align: left; }
     .profile-content h2 { margin: 0 0 18px; font-size: clamp(14px,3vw,24px); letter-spacing: 1px; line-height: 1.2; }
     .profile-content p { margin: 8px 0; } .profile-content a { color: inherit; }
     .password-lock { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
-    .password-subtitle, .password-question { margin: 0; line-height: 1.3; } .password-subtitle { font-size: 14px; } .password-question { font-size: 12px; opacity: .8; }
+    .password-subtitle, .password-question { margin: 0; line-height: 1.3; } .password-subtitle { font-size: 14px; } .password-question { font-size: 12px; opacity: .8; text-transform: none; }
     .password-form { display: flex; gap: 10px; align-items: center; } .password-input { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid rgba(255,255,255,.35); border-radius: 10px; background: rgba(255,255,255,.06); color: inherit; text-align: center; letter-spacing: 2px; } .password-button { padding: 11px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 10px; background: rgba(255,255,255,.08); color: inherit; cursor: pointer; }
     .wrong-feedback { min-height: 20px; color: #ff6b6b; font-size: 12px; opacity: 0; transition: opacity .2s; } .wrong-feedback.show { opacity: 1; }
     .secret-panel { margin-top: 16px; padding: 18px 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; visibility: hidden; filter: blur(18px); opacity: 0; transform: scale(.98); transition: 1.2s ease; } .secret-panel.unlocked { visibility: visible; filter: none; opacity: 1; transform: none; }
@@ -70,8 +70,8 @@
 </head>
 <body>
   <main id="mainScreen"><div class="frame-container">
-    <a href="#" class="frame-link" id="museionBtn"><img src="museionworks.png?v=3" alt="Museion Works Frame"><span class="hover-text">MUSEION<br>WORKS</span></a>
-    <a href="#" class="frame-link" id="suannBtn"><img src="suannpf.png?v=3" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
+    <a href="/open" class="frame-link" id="museionBtn"><img src="museionworks.png?v=3" alt="Museion Works Frame"><span class="hover-text">MUSEION<br>WORKS</span></a>
+    <a href="/open/map" class="frame-link" id="suannBtn"><img src="suannpf.png?v=3" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
   </div></main>
   <div class="ready-popup" id="readyPopup" aria-live="assertive"><div class="ready-popup-card">WAIT FOR READY</div></div>
   <section id="cookieScreen">
@@ -99,14 +99,39 @@
       'star-three': '<div class="profile-content"><h2>STAR III THE CHOICE</h2><p>THE CHOICE IS YOURS.</p></div>',
       'star-four': '<div class="profile-content"><h2>STAR IV THE DESTINY</h2><div class="password-lock"><p class="password-subtitle">수안의 생일 여섯자리를 입력해주세요.</p><p class="password-question">When is suann\'s birthday? Enter the 6digit number.</p><div class="password-form"><input class="password-input" type="password" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="Password input"><button class="password-button" type="button">ENTER</button></div><div class="wrong-feedback" aria-live="polite"></div><div class="secret-panel"><p>Personal Blog: <a href="https://blog.naver.com/ahnsuann" target="_blank" rel="noopener noreferrer">@ahnsuann</a></p><p>Personal Instagram: <a href="https://www.instagram.com/newan9el/" target="_blank" rel="noopener noreferrer">@newan9el</a></p></div></div></div>'
     };
-    $('#museionBtn').addEventListener('click', (event) => { event.preventDefault(); $('#readyPopup').classList.add('show'); setTimeout(() => $('#readyPopup').classList.remove('show'), 1400); });
+    
+    $('#museionBtn').addEventListener('click', (event) => { 
+      event.preventDefault(); 
+      history.pushState(null, '', '/open');
+      $('#readyPopup').classList.add('show'); 
+      setTimeout(() => $('#readyPopup').classList.remove('show'), 1400); 
+    });
+    
     $('#readyPopup').addEventListener('click', () => $('#readyPopup').classList.remove('show'));
-    $('#suannBtn').addEventListener('click', (event) => { event.preventDefault(); mainScreen.classList.add('melt'); cookieImage.classList.remove('breaking'); fateImage.classList.remove('revealed'); cookieScreen.classList.remove('sky-background'); fateModal.classList.remove('open'); cookieScreen.style.display = 'flex'; setTimeout(() => mainScreen.style.display = 'none', 2000); });
-    $('#returnButton').addEventListener('click', () => { cookieScreen.style.display = 'none'; mainScreen.style.display = 'flex'; mainScreen.classList.remove('melt'); });
+    
+    $('#suannBtn').addEventListener('click', (event) => { 
+      event.preventDefault(); 
+      history.pushState(null, '', '/open/map');
+      mainScreen.classList.add('melt'); 
+      cookieImage.classList.remove('breaking'); 
+      fateImage.classList.remove('revealed'); 
+      cookieScreen.classList.remove('sky-background'); 
+      fateModal.classList.remove('open'); 
+      cookieScreen.style.display = 'flex'; 
+      setTimeout(() => mainScreen.style.display = 'none', 2000); 
+    });
+    
+    $('#returnButton').addEventListener('click', () => { 
+      history.pushState(null, '', '/');
+      cookieScreen.style.display = 'none'; 
+      mainScreen.style.display = 'flex'; 
+      mainScreen.classList.remove('melt'); 
+    });
+    
     const breakCookie = () => { cookieImage.classList.remove('breaking'); void cookieImage.offsetWidth; cookieImage.classList.add('breaking'); fateImage.classList.remove('revealed'); cookieScreen.classList.add('sky-background'); setTimeout(() => fateImage.classList.add('revealed'), 700); };
     cookieImage.addEventListener('click', breakCookie); $('#breakButton').addEventListener('click', breakCookie);
     document.querySelectorAll('.planet-hotspot').forEach((hotspot) => hotspot.addEventListener('click', (event) => { event.stopPropagation(); document.querySelectorAll('.planet-hotspot').forEach((item) => item.classList.remove('active')); hotspot.classList.add('active'); modalContent.innerHTML = popupContents[hotspot.dataset.popup]; fateModal.classList.toggle('portfolio-modal', hotspot.dataset.popup === 'star-two'); fateModal.classList.add('open'); }));
-    modalContent.addEventListener('click', (event) => { if (!event.target.closest('.password-button')) return; const input = $('.password-input'); const feedback = $('.wrong-feedback'); const secretPanel = $('.secret-panel'); if (input.value.trim() === '990603') { feedback.classList.remove('show'); secretPanel.classList.add('unlocked'); } else { feedback.textContent = 'Your password is incorrect'; feedback.classList.add('show'); input.value = ''; } });
+    modalContent.addEventListener('click', (event) => { if (!event.target.closest('.password-button')) return; const input = $('.password-input'); const feedback = $('.wrong-feedback'); const secretPanel = $('.secret-panel'); if (input && input.value.trim() === '990603') { feedback.classList.remove('show'); secretPanel.classList.add('unlocked'); } else { if (feedback) { feedback.textContent = 'Your password is incorrect'; feedback.classList.add('show'); } if (input) input.value = ''; } });
     modalContent.addEventListener('keydown', (event) => { if (event.key === 'Enter' && event.target.classList.contains('password-input')) { event.preventDefault(); $('.password-button').click(); } });
     $('#closeModal').addEventListener('click', () => { fateModal.classList.remove('open', 'portfolio-modal'); document.querySelectorAll('.planet-hotspot').forEach((item) => item.classList.remove('active')); });
   </script>
