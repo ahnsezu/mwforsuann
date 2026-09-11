@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Composite Card | Suann</title>
+	<style>
+		:root { --paper: #e8e5e0; --ink: #171717; --line: rgba(23, 23, 23, 0.22); }
+		* { box-sizing: border-box; }
+		html, body { min-height: 100%; margin: 0; background: var(--paper); color: var(--ink); font-family: Helvetica, Arial, sans-serif; }
+		body { padding: 32px; }
+		.page { max-width: 1200px; margin: 0 auto; }
+		header { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+		h1 { margin: 0; font-size: clamp(30px, 6vw, 76px); font-weight: 400; letter-spacing: 1px; line-height: 1; }
+		a { color: inherit; text-decoration: none; }
+		a:hover { text-decoration: underline; text-underline-offset: 4px; }
+		nav { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
+		.intro { max-width: 620px; margin: 50px 0 60px; font-size: clamp(20px, 3vw, 34px); line-height: 1.3; }
+		.gallery { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 12px; }
+		.gallery figure { margin: 0; }
+		.gallery img { display: block; width: 100%; aspect-ratio: 1 / 1.35; object-fit: contain; background: #d5d1ca; }
+		.gallery figcaption { padding-top: 8px; font-size: 11px; letter-spacing: 1px; }
+		footer { padding-top: 70px; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; }
+		@media (max-width: 680px) { body { padding: 20px; } header { align-items: flex-start; flex-direction: column; gap: 18px; } .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+	</style>
+</head>
+<body><main class="page"><header><h1>COMPOSITE CARD</h1><nav><a href="portraits.html">Back to portraits</a></nav></header><p class="intro">A concise portrait selection for casting, profile and presence.</p><section class="gallery"><figure><img src="museionworks.png" alt="Composite card portrait one"><figcaption>01 / Composite portrait</figcaption></figure><figure><img src="suannpf.png" alt="Composite card portrait two"><figcaption>02 / Composite portrait</figcaption></figure></section><footer>ahnsuann@kakao.com</footer></main></body>
+</html>
