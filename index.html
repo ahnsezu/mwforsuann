@@ -15,7 +15,7 @@
 			margin: 0;
 			padding: 0;
 			overflow: hidden;
-			background: #000 url('mainbackground.jpg') center / cover no-repeat fixed;
+			background: #000 url('geminibg.jpg') center / cover no-repeat fixed;
 			font-family: Helvetica, Arial, sans-serif;
 		}
 
@@ -249,6 +249,8 @@
 
 		.modal-bar {
 			width: min(420px, calc(100vw - 48px));
+			box-sizing: border-box;
+			display: flex;
 			gap: 8px;
 			padding: 16px 18px;
 		}
@@ -557,7 +559,7 @@
 	<div id="mainScreen">
 		<div class="frame-container">
 			<a href="#" class="frame-link" id="museionBtn">
-				<img src="./museionworks.png" alt="Museion Works Frame" loading="eager" decoding="async" onerror="this.onerror=null; this.src='./suannpf.png';">
+				<img src="./museionworks.png" alt="Museion Works Frame" loading="eager" decoding="async">
 				<span class="hover-text">MUSEION<br>WORKS</span>
 			</a>
 
@@ -574,14 +576,14 @@
 
 	<div id="cookieScreen">
 		<div class="fate-map" id="fateImage">
-			<img class="fate-image" src="ChatGPT Image 2026년 9월 11일 오후 04_26_52.png" alt="Constellation">
+			<img class="fate-image" src="./constellation.png" alt="Constellation">
 			<button class="planet-hotspot" type="button" data-popup="star-one" style="left: 53.3%; top: 10.1%;" aria-label="Star one">
 				<span class="planet-popup">STAR I<br>THE BEGINNING</span>
 			</button>
 			<button class="planet-hotspot" type="button" data-popup="star-two" style="left: 44.7%; top: 23%;" aria-label="Star two">
 				<span class="planet-popup">STAR II<br>THE CROSSING</span>
 			</button>
-			<button class="planet-hotspot" type="button" data-popup="STAR III&lt;br&gt;THE CHOICE" style="left: 67.8%; top: 51.5%;" aria-label="Star three">
+			<button class="planet-hotspot" type="button" data-popup="star-three" style="left: 67.8%; top: 51.5%;" aria-label="Star three">
 				<span class="planet-popup">STAR III<br>THE CHOICE</span>
 			</button>
 			<button class="planet-hotspot" type="button" data-popup="star-four" style="left: 55.5%; top: 87.7%;" aria-label="Star four">
@@ -685,6 +687,12 @@
 				<div class="profile-content">
 					<h2>STAR II THE CROSSING</h2>
 					<p><span class="plain-link">WAIT FOR BEGINNING</span></p>
+				</div>
+			`,
+			'star-three': `
+				<div class="profile-content">
+					<h2>STAR III THE CHOICE</h2>
+					<p>Choose your direction.</p>
 				</div>
 			`,
 			'star-four': `
