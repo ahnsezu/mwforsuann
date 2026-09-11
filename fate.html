@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suann | Fate Map</title>
+  <style>
+    * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
+    #fateScreen { position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; justify-content: center; align-items: center; background: url('geminibg.jpg') center / cover no-repeat; }
+    .fate-map { position: absolute; z-index: 2; width: min(760px, 88vw); transform: translateY(-8vh); animation: map-open .9s ease both; }
+    .fate-image { display: block; width: 100%; height: auto; }
+    .planet-hotspot { position: absolute; width: clamp(22px,3vw,34px); aspect-ratio: 1; padding: 0; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; background: rgba(255,255,255,.12); box-shadow: 0 0 16px rgba(255,255,255,.75); cursor: pointer; transform: translate(-50%,-50%); }
+    .planet-hotspot:hover, .planet-hotspot.active { background: rgba(255,255,255,.35); box-shadow: 0 0 24px #fff; }
+    .fate-modal { position: absolute; top: 50%; left: 50%; z-index: 5; display: none; width: min(420px,calc(100vw - 48px)); aspect-ratio: 1; flex-direction: column; overflow: hidden; border: 1px solid rgba(255,255,255,.35); border-radius: 24px; background: rgba(0,0,0,.8); color: #fff; box-shadow: 0 24px 70px rgba(0,0,0,.6); transform: translate(-50%,-50%) scale(.9); }
+    .fate-modal.open { display: flex; animation: modal-open .3s ease-out forwards; }
+    .fate-modal.portfolio-modal { background: #e8e5e0; color: #171717; }
+    .modal-bar { display: flex; gap: 8px; padding: 16px 18px; }
+    .window-control { width: 14px; height: 14px; padding: 0; border: 0; border-radius: 50%; cursor: pointer; }
+    .window-control.close { background: #ff5f57; } .window-control.minimize { background: #ffbd2e; } .window-control.expand { background: #28c840; }
+    .modal-content { display: flex; flex: 1; overflow-y: auto; align-items: center; padding: 28px; font-size: clamp(18px,3vw,26px); letter-spacing: 2px; line-height: 1.5; text-align: center; }
+    .profile-content { width: 100%; font-size: 15px; letter-spacing: .5px; line-height: 1.65; text-align: left; }
+    .profile-content h2 { margin: 0 0 18px; font-size: clamp(14px,3vw,24px); letter-spacing: 1px; line-height: 1.2; }
+    .profile-content p { margin: 8px 0; } .profile-content a { color: inherit; }
+    .password-lock { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+    .password-subtitle, .password-question { margin: 0; line-height: 1.3; } .password-subtitle { font-size: 14px; } .password-question { font-size: 12px; opacity: .8; }
+    .password-form { display: flex; gap: 10px; align-items: center; } .password-input { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid rgba(255,255,255,.35); border-radius: 10px; background: rgba(255,255,255,.06); color: inherit; text-align: center; letter-spacing: 2px; } .password-button { padding: 11px 14px; border: 1px solid rgba(255,255,255,.35); border-radius: 10px; background: rgba(255,255,255,.08); color: inherit; cursor: pointer; }
+    .wrong-feedback { min-height: 20px; color: #ff6b6b; font-size: 12px; opacity: 0; transition: opacity .2s; } .wrong-feedback.show { opacity: 1; }
+    .secret-panel { margin-top: 16px; padding: 18px 16px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; visibility: hidden; filter: blur(18px); opacity: 0; transform: scale(.98); transition: 1.2s ease; } .secret-panel.unlocked { visibility: visible; filter: none; opacity: 1; transform: none; }
+    @keyframes map-open { from { opacity: 0; transform: translateY(-8vh) scale(.72) rotate(-5deg); } to { opacity: 1; transform: translateY(-8vh); } }
+    @keyframes modal-open { to { transform: translate(-50%,-50%) scale(1); } }
+  </style>
+</head>
+<body>
+  <main id="fateScreen">
+    <div class="fate-map"><img class="fate-image" src="constellation.png" alt="Constellation">
+      <button class="planet-hotspot" data-popup="star-one" style="left:53.3%;top:10.1%" aria-label="Star one"></button>
+      <button class="planet-hotspot" data-popup="star-two" style="left:44.7%;top:23%" aria-label="Star two"></button>
+      <button class="planet-hotspot" data-popup="star-three" style="left:67.8%;top:51.5%" aria-label="Star three"></button>
+      <button class="planet-hotspot" data-popup="star-four" style="left:55.5%;top:87.7%" aria-label="Star four"></button>
+    </div>
+    <div class="fate-modal" id="fateModal" role="dialog" aria-modal="true" aria-label="Star information"><div class="modal-bar"><button class="window-control close" id="closeModal" aria-label="Close window"></button><button class="window-control minimize" aria-label="Minimize window"></button><button class="window-control expand" aria-label="Expand window"></button></div><div class="modal-content" id="modalContent"></div></div>
+  </main>
+  <script>
+    const $ = (selector) => document.querySelector(selector);
+    const fateModal = $('#fateModal');
+    const modalContent = $('#modalContent');
+    const popupContents = {
+      'star-one': '<div class="profile-content"><h2>STAR I THE BEGINNING</h2><p>suann, Based in Incheon and Seoul, Korea</p><p>- photography<br>- design</p><p>contact.</p><p>- email: <a href="mailto:ahnsuann@kakao.com">ahnsuann@kakao.com</a><br>- instagram: <a href="https://instagram.com/museionworks" target="_blank" rel="noopener noreferrer">@museionworks</a></p></div>',
+      'star-two': '<div class="profile-content"><h2>STAR II THE CROSSING</h2><p>WAIT FOR BEGINNING</p></div>',
+      'star-three': '<div class="profile-content"><h2>STAR III THE CHOICE</h2><p>THE CHOICE IS YOURS.</p></div>',
+      'star-four': '<div class="profile-content"><h2>STAR IV THE DESTINY</h2><div class="password-lock"><p class="password-subtitle">수안의 생일 여섯자리를 입력해주세요.</p><p class="password-question">When is suann\'s birthday? Enter the 6digit number.</p><div class="password-form"><input class="password-input" type="password" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="Password input"><button class="password-button" type="button">ENTER</button></div><div class="wrong-feedback" aria-live="polite"></div><div class="secret-panel"><p>Personal Blog: <a href="https://blog.naver.com/ahnsuann" target="_blank" rel="noopener noreferrer">@ahnsuann</a></p><p>Personal Instagram: <a href="https://www.instagram.com/newan9el/" target="_blank" rel="noopener noreferrer">@newan9el</a></p></div></div></div>'
+    };
+    document.querySelectorAll('.planet-hotspot').forEach((hotspot) => hotspot.addEventListener('click', (event) => { event.stopPropagation(); document.querySelectorAll('.planet-hotspot').forEach((item) => item.classList.remove('active')); hotspot.classList.add('active'); modalContent.innerHTML = popupContents[hotspot.dataset.popup]; fateModal.classList.toggle('portfolio-modal', hotspot.dataset.popup === 'star-two'); fateModal.classList.add('open'); }));
+    modalContent.addEventListener('click', (event) => { if (!event.target.closest('.password-button')) return; const input = $('.password-input'); const feedback = $('.wrong-feedback'); const secretPanel = $('.secret-panel'); if (input.value.trim() === '990603') { feedback.classList.remove('show'); secretPanel.classList.add('unlocked'); } else { feedback.textContent = 'Your password is incorrect'; feedback.classList.add('show'); input.value = ''; } });
+    modalContent.addEventListener('keydown', (event) => { if (event.key === 'Enter' && event.target.classList.contains('password-input')) { event.preventDefault(); $('.password-button').click(); } });
+    $('#closeModal').addEventListener('click', () => { fateModal.classList.remove('open', 'portfolio-modal'); document.querySelectorAll('.planet-hotspot').forEach((item) => item.classList.remove('active')); });
+  </script>
+</body>
+</html>
