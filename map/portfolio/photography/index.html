@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>IDOL | Suann</title>
+	<title>SUANN・遂安</title>
 
 	<style>
 		:root {
@@ -69,43 +69,54 @@
 		}
 
 		.intro {
-			max-width: 620px;
-			margin: 50px 0 60px;
+			max-width: 650px;
+			margin: 50px 0 70px;
 			font-size: clamp(20px, 3vw, 34px);
 			line-height: 1.3;
 		}
 
-		.gallery {
-			display: grid;
-			grid-template-columns: repeat(4, minmax(0, 1fr));
+		.categories {
+			display: flex;
+			min-height: 48vh;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
 			gap: 12px;
+			margin: 0 auto 70px;
 		}
 
-		.gallery figure {
-			margin: 0;
+		.category-link {
+			width: 291px;
+			font-size: 14px;
+			letter-spacing: 1px;
+			text-align: center;
+			text-transform: uppercase;
 		}
 
-		.gallery a {
+		.category-link img {
 			display: block;
-		}
-
-		.gallery img {
-			display: block;
-			width: 100%;
-			aspect-ratio: 1 / 1.35;
+			width: 291px;
+			height: 393px;
+			margin-bottom: 12px;
 			object-fit: contain;
 			background: #d5d1ca;
 			transition: opacity 0.25s ease;
 		}
 
-		.gallery a:hover img {
+		.category-link:hover img {
 			opacity: 0.65;
 		}
 
-		.gallery figcaption {
-			padding-top: 8px;
-			font-size: 11px;
+		.category-link:hover {
+			background: rgba(255, 255, 255, 0.3);
+			text-decoration: none;
+		}
+
+		footer {
+			padding: 70px 0 20px;
+			font-size: 12px;
 			letter-spacing: 1px;
+			text-transform: uppercase;
 		}
 
 		@media (max-width: 680px) {
@@ -119,84 +130,83 @@
 				gap: 18px;
 			}
 
-			.gallery {
-				grid-template-columns: repeat(2, minmax(0, 1fr));
+			.categories {
+				min-height: 42vh;
+				flex-direction: column;
+				margin-bottom: 48px;
+			}
+
+			.category-link,
+			.category-link img {
+				width: min(291px, 80vw);
+			}
+
+			.category-link img {
+				height: auto;
+				aspect-ratio: 291 / 393;
 			}
 		}
 	</style>
 </head>
 
 <body>
-
 	<main class="page">
 
 		<header>
-			<h1>IDOL</h1>
+			<h1>PHOTOGRAPHY</h1>
 
 			<nav>
-				<a href="/map/portfolio/photography/portraits/">
-					BACK TO PORTRAITS
-				</a>
+				<a href="../">Back to portfolio</a>
 			</nav>
 		</header>
 
-		<p class="intro">
-			Selected idol portrait projects by suann.
-		</p>
+		<p class="intro">CATEGORIES</p>
 
-		<section class="gallery" aria-label="Idol groups">
+		<nav
+			class="categories"
+			aria-label="Photography categories"
+		>
 
-			<!-- 01. GROUP 01 -->
-			<figure>
-				<a href="group-01/">
-					<img src="group-01.png" alt="Group 01">
-					<figcaption>01. GROUP 01</figcaption>
-				</a>
-			</figure>
+			<!-- PORTRAITS -->
+			<a
+				class="category-link"
+				href="./portraits/"
+			>
+				<img
+					src="./portraits.png"
+					alt="Portraits"
+				>
+				Portraits
+			</a>
 
-			<!-- 02. GROUP 02 -->
-			<figure>
-				<a href="group-02/">
-					<img src="group-02.png" alt="Group 02">
-					<figcaption>02. GROUP 02</figcaption>
-				</a>
-			</figure>
+			<!-- PRODUCT PHOTOGRAPHY -->
+			<a
+				class="category-link"
+				href="./product-photography"
+			>
+				<img
+					src="./productphotography.png"
+					alt="Product Photography"
+				>
+				Product Photography
+			</a>
 
-			<!-- 03. GROUP 03 -->
-			<figure>
-				<a href="group-03/">
-					<img src="group-03.png" alt="Group 03">
-					<figcaption>03. GROUP 03</figcaption>
-				</a>
-			</figure>
+			<!-- LANDSCAPES -->
+			<a
+				class="category-link"
+				href="./landscapes"
+			>
+				<img
+					src="./landsacpes.png"
+					alt="Landscapes"
+				>
+				Landscapes
+			</a>
 
-			<!-- 04. GROUP 04 -->
-			<figure>
-				<a href="group-04/">
-					<img src="group-04.png" alt="Group 04">
-					<figcaption>04. GROUP 04</figcaption>
-				</a>
-			</figure>
+		</nav>
 
-			<!-- 05. GROUP 05 -->
-			<figure>
-				<a href="group-05/">
-					<img src="group-05.png" alt="Group 05">
-					<figcaption>05. GROUP 05</figcaption>
-				</a>
-			</figure>
-
-			<!-- 06. GROUP 06 -->
-			<figure>
-				<a href="group-06/">
-					<img src="group-06.png" alt="Group 06">
-					<figcaption>06. GROUP 06</figcaption>
-				</a>
-			</figure>
-
-		</section>
+		<footer></footer>
 
 	</main>
-
 </body>
 </html>
