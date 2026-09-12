@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>CONCEPTS STUDY | Suann</title>
+
+	<style>
+		:root {
+			--paper: #e8e5e0;
+			--ink: #171717;
+			--line: rgba(23, 23, 23, 0.22);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			margin: 0;
+			min-height: 100%;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		body {
+			padding: 32px;
+		}
+
+		.page {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 24px;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(30px, 6vw, 76px);
+			font-weight: 400;
+			letter-spacing: 1px;
+			line-height: 1;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
+		nav {
+			font-size: 13px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		.intro {
+			max-width: 620px;
+			margin: 50px 0 60px;
+			font-size: clamp(20px, 3vw, 34px);
+			line-height: 1.3;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, 291px);
+			gap: 12px;
+		}
+
+		.gallery figure {
+			margin: 0;
+		}
+
+		.gallery button {
+			display: block;
+			padding: 0;
+			border: 0;
+			background: none;
+			cursor: pointer;
+			width: 291px;
+		}
+
+		.gallery img {
+			display: block;
+			width: 291px;
+			height: 393px;
+			object-fit: contain;
+			background: #d5d1ca;
+			transition: opacity 0.25s ease;
+		}
+
+		.gallery button:hover img {
+			opacity: 0.65;
+		}
+
+		.gallery figcaption {
+			padding-top: 8px;
+			font-size: 11px;
+			letter-spacing: 1px;
+			text-align: left;
+		}
+
+		.lightbox {
+			position: fixed;
+			inset: 0;
+			z-index: 1000;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			padding: 40px;
+			background: rgba(23, 23, 23, 0.94);
+		}
+
+		.lightbox.is-open {
+			display: flex;
+		}
+
+		.lightbox img {
+			max-width: calc(100vw - 120px);
+			max-height: calc(100vh - 100px);
+			width: auto;
+			height: auto;
+			object-fit: contain;
+		}
+
+		.close,
+		.prev,
+		.next {
+			position: fixed;
+			z-index: 1001;
+			border: 0;
+			background: none;
+			color: #fff;
+			cursor: pointer;
+			font-family: Helvetica, Arial, sans-serif;
+			font-size: 13px;
+			letter-spacing: 1px;
+		}
+
+		.close {
+			top: 24px;
+			right: 28px;
+		}
+
+		.prev {
+			left: 28px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.next {
+			right: 28px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		.close:hover,
+		.prev:hover,
+		.next:hover {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
+		@media (max-width: 680px) {
+			body {
+				padding: 20px;
+			}
+
+			header {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 18px;
+			}
+
+			.gallery {
+				grid-template-columns: repeat(auto-fill, 291px);
+			}
+
+			.lightbox {
+				padding: 20px;
+			}
+
+			.lightbox img {
+				max-width: calc(100vw - 40px);
+				max-height: calc(100vh - 80px);
+			}
+
+			.prev {
+				left: 16px;
+			}
+
+			.next {
+				right: 16px;
+			}
+
+			.close {
+				top: 16px;
+				right: 18px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<main class="page">
+
+		<header>
+			<h1>CONCEPTS STUDY</h1>
+
+			<nav>
+				<a href="/map/portfolio/photography/portraits/concepts/">
+					BACK TO CONCEPTS
+				</a>
+			</nav>
+		</header>
+
+		<p class="intro">
+			A study of portrait, atmosphere and visual language.
+		</p>
+
+		<section class="gallery" aria-label="Concepts Study photographs">
+
+			<figure>
+				<button type="button" class="image-button" data-index="0">
+					<img src="concepts-study-01.jpg" alt="Concepts Study 01">
+					<figcaption>01. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+			<figure>
+				<button type="button" class="image-button" data-index="1">
+					<img src="concepts-study-02.jpg" alt="Concepts Study 02">
+					<figcaption>02. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+			<figure>
+				<button type="button" class="image-button" data-index="2">
+					<img src="concepts-study-03.jpg" alt="Concepts Study 03">
+					<figcaption>03. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+			<figure>
+				<button type="button" class="image-button" data-index="3">
+					<img src="concepts-study-04.jpg" alt="Concepts Study 04">
+					<figcaption>04. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+			<figure>
+				<button type="button" class="image-button" data-index="4">
+					<img src="concepts-study-05.jpg" alt="Concepts Study 05">
+					<figcaption>05. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+			<figure>
+				<button type="button" class="image-button" data-index="5">
+					<img src="concepts-study-06.jpg" alt="Concepts Study 06">
+					<figcaption>06. CONCEPTS STUDY</figcaption>
+				</button>
+			</figure>
+
+		</section>
+
+	</main>
+
+	<div class="lightbox" id="lightbox" aria-hidden="true">
+		<button type="button" class="close" id="close">CLOSE</button>
+		<button type="button" class="prev" id="prev">PREV</button>
+		<img id="lightbox-image" src="" alt="">
+		<button type="button" class="next" id="next">NEXT</button>
+	</div>
+
+	<script>
+		const images = [
+			"concepts-study-01.jpg",
+			"concepts-study-02.jpg",
+			"concepts-study-03.jpg",
+			"concepts-study-04.jpg",
+			"concepts-study-05.jpg",
+			"concepts-study-06.jpg"
+		];
+
+		const buttons = document.querySelectorAll(".image-button");
+		const lightbox = document.getElementById("lightbox");
+		const lightboxImage = document.getElementById("lightbox-image");
+		const closeButton = document.getElementById("close");
+		const prevButton = document.getElementById("prev");
+		const nextButton = document.getElementById("next");
+
+		let currentIndex = 0;
+
+		function showImage(index) {
+			currentIndex = (index + images.length) % images.length;
+			lightboxImage.src = images[currentIndex];
+			lightboxImage.alt = "Concepts Study " + String(currentIndex + 1).padStart(2, "0");
+			lightbox.classList.add("is-open");
+			lightbox.setAttribute("aria-hidden", "false");
+			document.body.style.overflow = "hidden";
+		}
+
+		function closeLightbox() {
+			lightbox.classList.remove("is-open");
+			lightbox.setAttribute("aria-hidden", "true");
+			lightboxImage.src = "";
+			document.body.style.overflow = "";
+		}
+
+		buttons.forEach((button) => {
+			button.addEventListener("click", () => {
+				showImage(Number(button.dataset.index));
+			});
+		});
+
+		closeButton.addEventListener("click", closeLightbox);
+
+		prevButton.addEventListener("click", () => {
+			showImage(currentIndex - 1);
+		});
+
+		nextButton.addEventListener("click", () => {
+			showImage(currentIndex + 1);
+		});
+
+		lightbox.addEventListener("click", (event) => {
+			if (event.target === lightbox) {
+				closeLightbox();
+			}
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (!lightbox.classList.contains("is-open")) return;
+
+			if (event.key === "Escape") {
+				closeLightbox();
+			}
+
+			if (event.key === "ArrowLeft") {
+				showImage(currentIndex - 1);
+			}
+
+			if (event.key === "ArrowRight") {
+				showImage(currentIndex + 1);
+			}
+		});
+	</script>
+
+</body>
+</html>
