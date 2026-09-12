@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio | Suann</title>
+	<style>
+		:root {
+			--paper: #e8e5e0;
+			--ink: #171717;
+			--line: rgba(23, 23, 23, 0.22);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			min-height: 100%;
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		body {
+			padding: 32px;
+		}
+
+		.portfolio-page {
+			max-width: 1180px;
+			min-height: calc(100vh - 64px);
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 24px;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(28px, 5vw, 64px);
+			font-weight: 400;
+			letter-spacing: 1px;
+			line-height: 1;
+			white-space: nowrap;
+		}
+
+		nav a,
+		.project a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		nav a {
+			font-size: 13px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		nav a:hover,
+		.project a:hover {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
+		.intro {
+			max-width: 560px;
+			margin: 48px 0 64px;
+			font-size: clamp(18px, 2.5vw, 28px);
+			letter-spacing: 0.5px;
+			line-height: 1.35;
+		}
+
+		.project-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 28px;
+		}
+
+		.project {
+			padding-top: 14px;
+			border-top: 1px solid var(--line);
+		}
+
+		.project-image {
+			width: 100%;
+			aspect-ratio: 1.35;
+			object-fit: contain;
+			background: #d5d1ca;
+		}
+
+		.project h2 {
+			margin: 16px 0 8px;
+			font-size: 18px;
+			font-weight: 400;
+			letter-spacing: 1px;
+			white-space: nowrap;
+		}
+
+		.project p {
+			margin: 0;
+			font-size: 14px;
+			line-height: 1.5;
+		}
+
+		footer {
+			margin-top: auto;
+			padding-top: 64px;
+			font-size: 12px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		@media (max-width: 640px) {
+			body {
+				padding: 20px;
+			}
+
+			.portfolio-page {
+				min-height: calc(100vh - 40px);
+			}
+
+			header {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.project-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="portfolio-page">
+		<header>
+			<h1>PORTFOLIO</h1>
+			<nav><a href="index.html">Back to main</a></nav>
+		</header>
+
+		<p class="intro">Selected photography, design and visual studies by suann.<br>Incheon / Seoul, Korea.</p>
+
+		<section class="project-grid" aria-label="Selected projects">
+			<article class="project">
+				<a href="https://museionworks.com" target="_blank" rel="noopener noreferrer">
+					<img class="project-image" src="museionworks.png" alt="Museion Works frame">
+					<h2>01 / MUSEION WORKS</h2>
+				</a>
+				<p>Photography, design and visual direction.<br><a href="https://museionworks.com" target="_blank" rel="noopener noreferrer">Visit the external archive</a></p>
+			</article>
+
+			<article class="project">
+				<img class="project-image" src="suannpf.png" alt="Suann frame">
+				<h2>02 / SUANN</h2>
+				<p>Personal work and selected experiments.</p>
+			</article>
+		</section>
+
+		<footer>ahnsuann@kakao.com</footer>
+	</main>
+</body>
+</html>
