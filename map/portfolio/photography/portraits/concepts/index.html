@@ -3,72 +3,184 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Concepts | Suann</title>
+
 	<style>
-		:root { --paper: #e8e5e0; --ink: #171717; --line: rgba(23, 23, 23, 0.22); }
-		* { box-sizing: border-box; }
-		html, body { min-height: 100%; margin: 0; background: var(--paper); color: var(--ink); font-family: Helvetica, Arial, sans-serif; }
-		body { padding: 32px; }
-		.page { max-width: 1200px; margin: 0 auto; }
-		header { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-		h1 { margin: 0; font-size: clamp(30px, 6vw, 76px); font-weight: 400; letter-spacing: 1px; line-height: 1; }
-		a { color: inherit; text-decoration: none; }
-		a:hover { text-decoration: underline; text-underline-offset: 4px; }
-		nav { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
-		.intro { max-width: 620px; margin: 50px 0 60px; font-size: clamp(20px, 3vw, 34px); line-height: 1.3; }
-		.gallery { display: grid; grid-template-columns: repeat(auto-fill, 291px); gap: 12px; }
-		.gallery figure { margin: 0; }
-		.gallery a { display: block; }
-		.gallery img { display: block; width: 291px; height: 393px; object-fit: contain; background: #d5d1ca; transition: opacity 0.25s ease; }
-		.gallery a:hover img { opacity: 0.65; }
-		.gallery figcaption { padding-top: 8px; font-size: 11px; letter-spacing: 1px; }
+		:root {
+			--paper: #e8e5e0;
+			--ink: #171717;
+			--line: rgba(23, 23, 23, 0.22);
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			min-height: 100%;
+			margin: 0;
+			background: var(--paper);
+			color: var(--ink);
+			font-family: Helvetica, Arial, sans-serif;
+		}
+
+		body {
+			padding: 32px;
+		}
+
+		.page {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		header {
+			display: flex;
+			justify-content: space-between;
+			align-items: baseline;
+			gap: 24px;
+			padding-bottom: 18px;
+			border-bottom: 1px solid var(--line);
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(30px, 6vw, 76px);
+			font-weight: 400;
+			letter-spacing: 1px;
+			line-height: 1;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+			text-underline-offset: 4px;
+		}
+
+		nav {
+			font-size: 13px;
+			letter-spacing: 1px;
+			text-transform: uppercase;
+		}
+
+		.intro {
+			max-width: 620px;
+			margin: 50px 0 60px;
+			font-size: clamp(20px, 3vw, 34px);
+			line-height: 1.3;
+		}
+
+		.gallery {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, 291px);
+			gap: 12px;
+		}
+
+		.gallery figure {
+			margin: 0;
+		}
+
+		.gallery a {
+			display: block;
+		}
+
+		.gallery img {
+			display: block;
+			width: 291px;
+			height: 393px;
+			object-fit: contain;
+			background: #d5d1ca;
+			transition: opacity 0.25s ease;
+		}
+
+		.gallery a:hover img {
+			opacity: 0.65;
+		}
+
+		.gallery figcaption {
+			padding-top: 8px;
+			font-size: 11px;
+			letter-spacing: 1px;
+		}
+
 		@media (max-width: 680px) {
-			body { padding: 20px; }
-			header { align-items: flex-start; flex-direction: column; gap: 18px; }
-			.gallery { grid-template-columns: repeat(auto-fill, 291px); }
+			body {
+				padding: 20px;
+			}
+
+			header {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 18px;
+			}
+
+			.gallery {
+				grid-template-columns: repeat(auto-fill, 291px);
+			}
 		}
 	</style>
 </head>
+
 <body>
+
 	<main class="page">
+
 		<header>
 			<h1>CONCEPTS</h1>
+
 			<nav>
-				<a href="../">BACK TO PORTRAITS</a>
+				<a href="/map/portfolio/photography/portraits/">
+					BACK TO PORTRAITS
+				</a>
 			</nav>
 		</header>
 
-		<p class="intro">Portraits built from ideas, mood and visual direction.</p>
+		<p class="intro">
+			Portraits built from ideas, mood and visual direction.
+		</p>
 
-		<section class="gallery" aria-label="Concept studies">
+		<section class="gallery" aria-label="Concept categories">
+
+			<!-- VELVET VEIL -->
 			<figure>
-				<a href="concepts-01.html">
+				<a href="velvet-veil/">
 					<img src="../suannpf.png" alt="Velvet Veil">
 					<figcaption>01. VELVET VEIL</figcaption>
 				</a>
 			</figure>
 
+			<!-- CONCEPTS STUDY -->
 			<figure>
-				<a href="concepts-02.html">
+				<a href="concepts-study/">
 					<img src="../museionworks.png" alt="Concepts Study">
 					<figcaption>02. CONCEPTS STUDY</figcaption>
 				</a>
 			</figure>
 
+			<!-- H&M&C -->
 			<figure>
-				<a href="concepts-03.html">
-					<img src="../suannpf.png" alt="H and M and C">
+				<a href="h-m-c/">
+					<img src="../suannpf.png" alt="H&amp;M&amp;C">
 					<figcaption>03. H&amp;M&amp;C</figcaption>
 				</a>
 			</figure>
 
+			<!-- OTHERS -->
 			<figure>
-				<a href="concepts-04.html">
-					<img src="../museionworks.png" alt="Concept portrait four">
-					<figcaption>04 / CONCEPT STUDY</figcaption>
+				<a href="others/">
+					<img src="../museionworks.png" alt="Others">
+					<figcaption>04. OTHERS</figcaption>
 				</a>
 			</figure>
+
 		</section>
+
 	</main>
+
 </body>
 </html>
