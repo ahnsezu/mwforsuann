@@ -1,366 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>TXT ・ 투모로우바이투게더 | Suann</title>
-
-	<style>
-		:root {
-			--paper: #e8e5e0;
-			--ink: #171717;
-			--line: rgba(23, 23, 23, 0.22);
-		}
-
-		* {
-			box-sizing: border-box;
-		}
-
-		html,
-		body {
-			min-height: 100%;
-			margin: 0;
-			background: var(--paper);
-			color: var(--ink);
-			font-family: Helvetica, Arial, sans-serif;
-		}
-
-		body {
-			padding: 32px;
-		}
-
-		.page {
-			max-width: 1200px;
-			margin: 0 auto;
-		}
-
-		header {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			gap: 24px;
-			padding-bottom: 18px;
-			border-bottom: 1px solid var(--line);
-		}
-
-		h1 {
-			margin: 0;
-			font-size: clamp(30px, 6vw, 76px);
-			font-weight: 400;
-			letter-spacing: 1px;
-			line-height: 1;
-		}
-
-		a {
-			color: inherit;
-			text-decoration: none;
-		}
-
-		a:hover {
-			text-decoration: underline;
-			text-underline-offset: 4px;
-		}
-
-		nav {
-			font-size: 13px;
-			letter-spacing: 1px;
-			text-transform: uppercase;
-		}
-
-		.intro {
-			max-width: 620px;
-			margin: 50px 0 60px;
-			font-size: clamp(20px, 3vw, 34px);
-			line-height: 1.3;
-		}
-
-		.gallery {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, 291px);
-			gap: 12px;
-		}
-
-		.gallery figure {
-			margin: 0;
-		}
-
-		.gallery button {
-			display: block;
-			width: 291px;
-			padding: 0;
-			border: 0;
-			background: none;
-			cursor: pointer;
-			color: inherit;
-			font-family: inherit;
-			text-align: left;
-		}
-
-		.gallery img {
-			display: block;
-			width: 291px;
-			height: 393px;
-			object-fit: contain;
-			background: #d5d1ca;
-			transition: opacity 0.25s ease;
-		}
-
-		.gallery button:hover img {
-			opacity: 0.65;
-		}
-
-		.gallery figcaption {
-			padding-top: 8px;
-			font-size: 11px;
-			letter-spacing: 1px;
-		}
-
-		.lightbox {
-			position: fixed;
-			inset: 0;
-			z-index: 1000;
-			display: none;
-			align-items: center;
-			justify-content: center;
-			padding: 40px;
-			background: rgba(23, 23, 23, 0.94);
-		}
-
-		.lightbox.is-open {
-			display: flex;
-		}
-
-		.lightbox img {
-			display: block;
-			max-width: calc(100vw - 120px);
-			max-height: calc(100vh - 100px);
-			width: auto;
-			height: auto;
-			object-fit: contain;
-		}
-
-		.lightbox button {
-			position: fixed;
-			z-index: 1001;
-			border: 0;
-			padding: 0;
-			background: none;
-			color: #fff;
-			cursor: pointer;
-			font-family: Helvetica, Arial, sans-serif;
-			font-size: 13px;
-			letter-spacing: 1px;
-		}
-
-		.close {
-			top: 24px;
-			right: 28px;
-		}
-
-		.prev {
-			left: 28px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.next {
-			right: 28px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.lightbox button:hover {
-			text-decoration: underline;
-			text-underline-offset: 4px;
-		}
-
-		@media (max-width: 680px) {
-			body {
-				padding: 20px;
-			}
-
-			header {
-				align-items: flex-start;
-				flex-direction: column;
-				gap: 18px;
-			}
-
-			.gallery {
-				grid-template-columns: repeat(auto-fill, 291px);
-			}
-
-			.lightbox {
-				padding: 20px;
-			}
-
-			.lightbox img {
-				max-width: calc(100vw - 40px);
-				max-height: calc(100vh - 80px);
-			}
-
-			.prev {
-				left: 16px;
-			}
-
-			.next {
-				right: 16px;
-			}
-
-			.close {
-				top: 16px;
-				right: 18px;
-			}
-		}
-	</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TXT ・ 투모로우바이투게더 | Suann</title>
+<style>
+:root{--paper:#e8e5e0;--ink:#171717;--line:rgba(23,23,23,.22)}
+*{box-sizing:border-box}
+html,body{min-height:100%;margin:0;background:var(--paper);color:var(--ink);font-family:Helvetica,Arial,sans-serif}
+body{padding:32px}.page{max-width:1200px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+h1{margin:0;font-size:clamp(30px,6vw,76px);font-weight:400;letter-spacing:1px;line-height:1}
+a{color:inherit;text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:4px}
+nav{font-size:13px;letter-spacing:1px;text-transform:uppercase}
+.intro{max-width:620px;margin:50px 0 60px;font-size:clamp(20px,3vw,34px);line-height:1.3}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,291px);gap:12px}
+.gallery figure{margin:0}.gallery button{display:block;width:291px;padding:0;border:0;background:none;cursor:pointer;color:inherit;font-family:inherit;text-align:left}
+.gallery img{display:block;width:291px;height:393px;object-fit:contain;background:#d5d1ca;transition:opacity .25s ease}
+.gallery button:hover img{opacity:.65}.gallery figcaption{padding-top:8px;font-size:11px;letter-spacing:1px}
+.lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:40px;background:rgba(23,23,23,.94)}
+.lightbox.is-open{display:flex}.lightbox img{display:block;max-width:calc(100vw - 120px);max-height:calc(100vh - 100px);width:auto;height:auto;object-fit:contain}
+.lightbox button{position:fixed;z-index:1001;border:0;padding:0;background:none;color:#fff;cursor:pointer;font-family:Helvetica,Arial,sans-serif;font-size:13px;letter-spacing:1px}
+.close{top:24px;right:28px}.prev{left:28px;top:50%;transform:translateY(-50%)}.next{right:28px;top:50%;transform:translateY(-50%)}
+.lightbox button:hover{text-decoration:underline;text-underline-offset:4px}
+@media(max-width:680px){body{padding:20px}header{align-items:flex-start;flex-direction:column;gap:18px}.gallery{grid-template-columns:repeat(auto-fill,291px)}.lightbox{padding:20px}.lightbox img{max-width:calc(100vw - 40px);max-height:calc(100vh - 80px)}.prev{left:16px}.next{right:16px}.close{top:16px;right:18px}}
+</style>
 </head>
-
 <body>
+<main class="page">
+<header>
+<h1>TXT ・ 투모로우바이투게더</h1>
+<nav><a href="/map/portfolio/photography/portraits/idol/">BACK TO IDOL</a></nav>
+</header>
+<p class="intro">Selected idol portrait studies by suann.</p>
 
-	<main class="page">
+<section class="gallery" aria-label="TXT ・ 투모로우바이투게더 photography">
+<figure><button type="button" class="image-button" data-index="0"><img src="./txt-01.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 01"><figcaption>01. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+<figure><button type="button" class="image-button" data-index="1"><img src="./txt-02.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 02"><figcaption>02. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+<figure><button type="button" class="image-button" data-index="2"><img src="./txt-03.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 03"><figcaption>03. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+<figure><button type="button" class="image-button" data-index="3"><img src="./txt-04.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 04"><figcaption>04. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+<figure><button type="button" class="image-button" data-index="4"><img src="./txt-05.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 05"><figcaption>05. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+<figure><button type="button" class="image-button" data-index="5"><img src="./txt-06.jpg?v=20260912" alt="TXT ・ 투모로우바이투게더 06"><figcaption>06. TXT ・ 투모로우바이투게더</figcaption></button></figure>
+</section>
+</main>
 
-		<header>
-			<h1>TXT ・ 투모로우바이투게더</h1>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+<button type="button" class="close" id="close">CLOSE</button>
+<button type="button" class="prev" id="prev">PREV</button>
+<img id="lightbox-image" src="" alt="">
+<button type="button" class="next" id="next">NEXT</button>
+</div>
 
-			<nav>
-				<a href="/map/portfolio/photography/portraits/idol/">
-					BACK TO IDOL
-				</a>
-			</nav>
-		</header>
+<script>
+const images=[
+"./txt-01.jpg?v=20260912",
+"./txt-02.jpg?v=20260912",
+"./txt-03.jpg?v=20260912",
+"./txt-04.jpg?v=20260912",
+"./txt-05.jpg?v=20260912",
+"./txt-06.jpg?v=20260912"
+];
+const buttons=document.querySelectorAll(".image-button");
+const lightbox=document.getElementById("lightbox");
+const lightboxImage=document.getElementById("lightbox-image");
+const closeButton=document.getElementById("close");
+const prevButton=document.getElementById("prev");
+const nextButton=document.getElementById("next");
+let currentIndex=0;
 
-		<p class="intro">
-			Selected idol portrait studies by suann.
-		</p>
-
-		<section class="gallery" aria-label="TXT ・ 투모로우바이투게더 photography">
-
-			<figure>
-				<button type="button" class="image-button" data-index="0">
-					<img src="txt-01.jpg" alt="TXT ・ 투모로우바이투게더 01">
-					<figcaption>01. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="1">
-					<img src="txt-02.jpg" alt="TXT ・ 투모로우바이투게더 02">
-					<figcaption>02. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="2">
-					<img src="txt-03.jpg" alt="TXT ・ 투모로우바이투게더 03">
-					<figcaption>03. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="3">
-					<img src="txt-04.jpg" alt="TXT ・ 투모로우바이투게더 04">
-					<figcaption>04. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="4">
-					<img src="txt-05.jpg" alt="TXT ・ 투모로우바이투게더 05">
-					<figcaption>05. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="5">
-					<img src="txt-06.jpg" alt="TXT ・ 투모로우바이투게더 06">
-					<figcaption>06. TXT ・ 투모로우바이투게더</figcaption>
-				</button>
-			</figure>
-
-		</section>
-
-	</main>
-
-	<div class="lightbox" id="lightbox" aria-hidden="true">
-		<button type="button" class="close" id="close">CLOSE</button>
-		<button type="button" class="prev" id="prev">PREV</button>
-		<img id="lightbox-image" src="" alt="">
-		<button type="button" class="next" id="next">NEXT</button>
-	</div>
-
-	<script>
-		const images = [
-			"txt-01.jpg",
-			"txt-02.jpg",
-			"txt-03.jpg",
-			"txt-04.jpg",
-			"txt-05.jpg",
-			"txt-06.jpg"
-		];
-
-		const buttons = document.querySelectorAll(".image-button");
-		const lightbox = document.getElementById("lightbox");
-		const lightboxImage = document.getElementById("lightbox-image");
-		const closeButton = document.getElementById("close");
-		const prevButton = document.getElementById("prev");
-		const nextButton = document.getElementById("next");
-
-		let currentIndex = 0;
-
-		function showImage(index) {
-			currentIndex = (index + images.length) % images.length;
-			lightboxImage.src = images[currentIndex];
-			lightboxImage.alt = "TXT ・ 투모로우바이투게더 " + String(currentIndex + 1).padStart(2, "0");
-			lightbox.classList.add("is-open");
-			lightbox.setAttribute("aria-hidden", "false");
-			document.body.style.overflow = "hidden";
-		}
-
-		function closeLightbox() {
-			lightbox.classList.remove("is-open");
-			lightbox.setAttribute("aria-hidden", "true");
-			lightboxImage.src = "";
-			document.body.style.overflow = "";
-		}
-
-		buttons.forEach((button) => {
-			button.addEventListener("click", () => {
-				showImage(Number(button.dataset.index));
-			});
-		});
-
-		closeButton.addEventListener("click", closeLightbox);
-
-		prevButton.addEventListener("click", () => {
-			showImage(currentIndex - 1);
-		});
-
-		nextButton.addEventListener("click", () => {
-			showImage(currentIndex + 1);
-		});
-
-		lightbox.addEventListener("click", (event) => {
-			if (event.target === lightbox) {
-				closeLightbox();
-			}
-		});
-
-		document.addEventListener("keydown", (event) => {
-			if (!lightbox.classList.contains("is-open")) return;
-
-			if (event.key === "Escape") {
-				closeLightbox();
-			}
-
-			if (event.key === "ArrowLeft") {
-				showImage(currentIndex - 1);
-			}
-
-			if (event.key === "ArrowRight") {
-				showImage(currentIndex + 1);
-			}
-		});
-	</script>
-
+function showImage(index){
+currentIndex=(index+images.length)%images.length;
+lightboxImage.src=images[currentIndex];
+lightboxImage.alt="TXT ・ 투모로우바이투게더 "+String(currentIndex+1).padStart(2,"0");
+lightbox.classList.add("is-open");
+lightbox.setAttribute("aria-hidden","false");
+document.body.style.overflow="hidden";
+}
+function closeLightbox(){
+lightbox.classList.remove("is-open");
+lightbox.setAttribute("aria-hidden","true");
+lightboxImage.src="";
+document.body.style.overflow="";
+}
+buttons.forEach(button=>button.addEventListener("click",()=>showImage(Number(button.dataset.index))));
+closeButton.addEventListener("click",closeLightbox);
+prevButton.addEventListener("click",()=>showImage(currentIndex-1));
+nextButton.addEventListener("click",()=>showImage(currentIndex+1));
+lightbox.addEventListener("click",event=>{if(event.target===lightbox)closeLightbox()});
+document.addEventListener("keydown",event=>{
+if(!lightbox.classList.contains("is-open"))return;
+if(event.key==="Escape")closeLightbox();
+if(event.key==="ArrowLeft")showImage(currentIndex-1);
+if(event.key==="ArrowRight")showImage(currentIndex+1);
+});
+</script>
 </body>
 </html>
