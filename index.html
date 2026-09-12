@@ -18,23 +18,24 @@
     .hover-text { position: absolute; top: 50%; left: 50%; width: 100%; color: #fff; font-size: clamp(28px, 4vw, 48px); letter-spacing: 2px; text-align: center; text-shadow: 0 0 10px #000; opacity: 0; pointer-events: none; transform: translate(-50%, -50%); transition: opacity .3s ease; }
     .frame-link:hover .hover-text { opacity: 1; }
     
-    /* 편지봉투 스타일 */
     .envelope-container { display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease; }
     .envelope-container:hover { transform: scale(1.06); }
     .envelope-container img { display: block; width: min(120px, 25vw); height: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
 
-    /* 편지지 팝업창 스타일 */
-    .letter-popup { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
+    /* 편지봉투 클릭 시 latterpaper.jpg가 배경으로 뜨는 편지지 팝업 */
+    .letter-popup { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(6px); }
     .letter-popup.show { display: flex; animation: fade-in 0.35s ease both; }
-    .letter-card { width: min(480px, 88vw); background: #fbf9f5; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,0.4); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid rgba(0,0,0,0.08); }
+    .letter-card { position: relative; width: min(520px, 90vw); aspect-ratio: 3 / 4; background: url('latterpaper.jpg') center / cover no-repeat; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid rgba(0,0,0,0.15); }
     .letter-popup.show .letter-card { transform: translateY(0) scale(1); }
-    .letter-titlebar { display: flex; gap: 8px; padding: 12px 16px; background: #f0ece1; border-bottom: 1px solid #e2ded4; }
+    .letter-titlebar { position: absolute; top: 0; left: 0; right: 0; display: flex; gap: 8px; padding: 12px 16px; background: rgba(240,236,225,0.85); backdrop-filter: blur(4px); border-bottom: 1px solid rgba(226,222,212,0.8); z-index: 2; }
     .letter-dot { width: 12px; height: 12px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: filter 0.2s; }
     .letter-dot.red { background: #ff5f57; }
     .letter-dot.yellow { background: #ffbd2e; }
     .letter-dot.green { background: #28c840; }
-    .letter-content { padding: 36px 30px; color: #2c2c2c; font-size: 15px; line-height: 1.8; letter-spacing: 0.5px; text-align: left; }
-    .letter-content h3 { margin: 0 0 16px 0; font-size: 18px; letter-spacing: 1px; font-weight: normal; border-bottom: 1px solid #dcd7ce; padding-bottom: 8px; }
+    
+    .letter-content { position: absolute; inset: 0; padding: 75px 36px 36px 36px; color: #2c2c2c; font-size: 14.5px; line-height: 1.75; letter-spacing: 0.3px; text-align: left; overflow-y: auto; display: flex; flex-direction: column; justify-content: center; }
+    .letter-content p { margin: 0 0 16px 0; white-space: pre-line; }
+    .letter-content a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
     .ready-popup { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.38); backdrop-filter: blur(4px); }
     .ready-popup.show { display: flex; animation: fade-in .35s ease both; }
@@ -108,13 +109,13 @@
       <a href="/map" class="frame-link" id="suannBtn"><img src="suannpf.png" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
     </div>
     
-    <!-- 편지봉투 추가 영역 -->
+    <!-- 편지봉투 -->
     <div class="envelope-container" id="envelopeBtn" title="Open Letter">
       <img src="envelop.jpg" alt="Envelope">
     </div>
   </main>
   
-  <!-- 편지지 팝업창 -->
+  <!-- latterpaper.jpg가 배경으로 뜨는 편지지 팝업창 -->
   <div class="letter-popup" id="letterPopup" aria-live="assertive">
     <div class="letter-card">
       <div class="letter-titlebar">
@@ -123,8 +124,8 @@
         <button class="letter-dot green"></button>
       </div>
       <div class="letter-content">
-        <h3>NOTE</h3>
-        <p>안녕하세요, 세주님.<br>이곳에 남기고 싶은 따뜻한 편지나 기록을 자유롭게 적어보세요. 원하시는 문구로 언제든지 수정해 드릴 수 있어요!</p>
+        <p>안녕하세요. 제 이름은 세주이자 수안입니다. 방문을 환영합니다.<br>협업 및 작업 연락은 <a href="mailto:ahnsuann@kakao.com">ahnsuann@kakao.com</a>으로, 인스타그램은 <a href="https://instagram.com/museionworks" target="_blank" rel="noopener noreferrer">@museionworks</a> 로 부탁드립니다.</p>
+        <p>Hello, I’m Sezu, also known as Suann. Welcome, and thank you for visiting.<br>For collaborations and work inquiries:<br><a href="mailto:ahnsuann@kakao.com">ahnsuann@kakao.com</a><br>Instagram: <a href="https://instagram.com/museionworks" target="_blank" rel="noopener noreferrer">@museionworks</a></p>
       </div>
     </div>
   </div>
