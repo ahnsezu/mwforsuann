@@ -8,9 +8,9 @@
     * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
     button, input { font: inherit; }
-    #mainScreen { position: absolute; inset: 0; z-index: 10; display: flex; justify-content: center; align-items: center; background: #e8e5e0; background-image: radial-gradient(ellipse at 18% 16%, rgba(255,255,255,.2), transparent 38%), radial-gradient(ellipse at 82% 74%, rgba(83,76,69,.08), transparent 42%); transition: opacity 2s ease, filter 2s ease, transform 2s ease; }
+    #mainScreen { position: absolute; inset: 0; z-index: 10; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 40px; background: #e8e5e0; background-image: radial-gradient(ellipse at 18% 16%, rgba(255,255,255,.2), transparent 38%), radial-gradient(ellipse at 82% 74%, rgba(83,76,69,.08), transparent 42%); transition: opacity 2s ease, filter 2s ease, transform 2s ease; }
     #mainScreen.melt { opacity: 0; filter: blur(15px); transform: scale(.97); pointer-events: none; }
-    .frame-container { width: 100%; padding: 24px; display: flex; gap: 50px; justify-content: center; align-items: center; }
+    .frame-container { width: 100%; padding: 0 24px; display: flex; gap: 50px; justify-content: center; align-items: center; }
     .frame-link { position: relative; display: block; text-decoration: none; cursor: pointer; transition: transform .3s ease; }
     .frame-link img { display: block; width: min(291px, calc((100vw - 98px) / 2)); max-width: 100%; height: auto; transition: opacity .3s ease, filter .3s ease; }
     .frame-link:hover { transform: scale(1.05); }
@@ -18,6 +18,24 @@
     .hover-text { position: absolute; top: 50%; left: 50%; width: 100%; color: #fff; font-size: clamp(28px, 4vw, 48px); letter-spacing: 2px; text-align: center; text-shadow: 0 0 10px #000; opacity: 0; pointer-events: none; transform: translate(-50%, -50%); transition: opacity .3s ease; }
     .frame-link:hover .hover-text { opacity: 1; }
     
+    /* 편지봉투 스타일 */
+    .envelope-container { display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease; }
+    .envelope-container:hover { transform: scale(1.06); }
+    .envelope-container img { display: block; width: min(120px, 25vw); height: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
+
+    /* 편지지 팝업창 스타일 */
+    .letter-popup { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); backdrop-filter: blur(5px); }
+    .letter-popup.show { display: flex; animation: fade-in 0.35s ease both; }
+    .letter-card { width: min(480px, 88vw); background: #fbf9f5; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,0.4); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid rgba(0,0,0,0.08); }
+    .letter-popup.show .letter-card { transform: translateY(0) scale(1); }
+    .letter-titlebar { display: flex; gap: 8px; padding: 12px 16px; background: #f0ece1; border-bottom: 1px solid #e2ded4; }
+    .letter-dot { width: 12px; height: 12px; border-radius: 50%; border: none; padding: 0; cursor: pointer; transition: filter 0.2s; }
+    .letter-dot.red { background: #ff5f57; }
+    .letter-dot.yellow { background: #ffbd2e; }
+    .letter-dot.green { background: #28c840; }
+    .letter-content { padding: 36px 30px; color: #2c2c2c; font-size: 15px; line-height: 1.8; letter-spacing: 0.5px; text-align: left; }
+    .letter-content h3 { margin: 0 0 16px 0; font-size: 18px; letter-spacing: 1px; font-weight: normal; border-bottom: 1px solid #dcd7ce; padding-bottom: 8px; }
+
     .ready-popup { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.38); backdrop-filter: blur(4px); }
     .ready-popup.show { display: flex; animation: fade-in .35s ease both; }
     .mac-popup-card { width: min(340px, 80vw); background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.45); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -84,12 +102,33 @@
   </style>
 </head>
 <body>
-  <main id="mainScreen"><div class="frame-container">
-    <a href="/open" class="frame-link" id="museionBtn"><img src="museionworks.png" alt="Museion Works Frame"><span class="hover-text">MUSEION<br>WORKS</span></a>
-    <!-- 포트폴리오(스타 2번) 새 창 링크 -->
-    <a href="/map/portfolio/" class="frame-link" id="suannBtn"><img src="suannpf.png" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
-  </div></main>
+  <main id="mainScreen">
+    <div class="frame-container">
+      <a href="/open" class="frame-link" id="museionBtn"><img src="museionworks.png" alt="Museion Works Frame"><span class="hover-text">MUSEION<br>WORKS</span></a>
+      <a href="/map" class="frame-link" id="suannBtn"><img src="suannpf.png" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
+    </div>
+    
+    <!-- 편지봉투 추가 영역 -->
+    <div class="envelope-container" id="envelopeBtn" title="Open Letter">
+      <img src="envelop.jpg" alt="Envelope">
+    </div>
+  </main>
   
+  <!-- 편지지 팝업창 -->
+  <div class="letter-popup" id="letterPopup" aria-live="assertive">
+    <div class="letter-card">
+      <div class="letter-titlebar">
+        <button class="letter-dot red" id="closeLetterPopup"></button>
+        <button class="letter-dot yellow"></button>
+        <button class="letter-dot green"></button>
+      </div>
+      <div class="letter-content">
+        <h3>NOTE</h3>
+        <p>안녕하세요, 세주님.<br>이곳에 남기고 싶은 따뜻한 편지나 기록을 자유롭게 적어보세요. 원하시는 문구로 언제든지 수정해 드릴 수 있어요!</p>
+      </div>
+    </div>
+  </div>
+
   <div class="ready-popup" id="readyPopup" aria-live="assertive">
     <div class="mac-popup-card">
       <div class="mac-titlebar">
@@ -146,6 +185,22 @@
     $('#readyPopup').addEventListener('click', (event) => { 
       if (event.target === $('#readyPopup')) {
         $('#readyPopup').classList.remove('show'); 
+      }
+    });
+
+    /* 편지봉투 팝업 제어 */
+    $('#envelopeBtn').addEventListener('click', () => {
+      $('#letterPopup').classList.add('show');
+    });
+
+    $('#closeLetterPopup').addEventListener('click', (event) => {
+      event.stopPropagation();
+      $('#letterPopup').classList.remove('show');
+    });
+
+    $('#letterPopup').addEventListener('click', (event) => {
+      if (event.target === $('#letterPopup')) {
+        $('#letterPopup').classList.remove('show');
       }
     });
     
