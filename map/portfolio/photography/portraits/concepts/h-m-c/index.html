@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>ORIENTALISM | Suann</title>
+	<title>H&M&C | Suann</title>
 
 	<style>
 		:root {
@@ -19,8 +19,8 @@
 
 		html,
 		body {
-			margin: 0;
 			min-height: 100%;
+			margin: 0;
 			background: var(--paper);
 			color: var(--ink);
 			font-family: Helvetica, Arial, sans-serif;
@@ -85,16 +85,9 @@
 			margin: 0;
 		}
 
-		.gallery button {
+		.gallery a {
 			display: block;
 			width: 291px;
-			padding: 0;
-			border: 0;
-			background: none;
-			cursor: pointer;
-			color: inherit;
-			font-family: inherit;
-			text-align: left;
 		}
 
 		.gallery img {
@@ -106,7 +99,7 @@
 			transition: opacity 0.25s ease;
 		}
 
-		.gallery button:hover img {
+		.gallery a:hover img {
 			opacity: 0.65;
 		}
 
@@ -114,65 +107,6 @@
 			padding-top: 8px;
 			font-size: 11px;
 			letter-spacing: 1px;
-		}
-
-		.lightbox {
-			position: fixed;
-			inset: 0;
-			z-index: 1000;
-			display: none;
-			align-items: center;
-			justify-content: center;
-			padding: 40px;
-			background: rgba(23, 23, 23, 0.94);
-		}
-
-		.lightbox.is-open {
-			display: flex;
-		}
-
-		.lightbox img {
-			display: block;
-			max-width: calc(100vw - 120px);
-			max-height: calc(100vh - 100px);
-			width: auto;
-			height: auto;
-			object-fit: contain;
-		}
-
-		.lightbox button {
-			position: fixed;
-			z-index: 1001;
-			border: 0;
-			padding: 0;
-			background: none;
-			color: #fff;
-			cursor: pointer;
-			font-family: Helvetica, Arial, sans-serif;
-			font-size: 13px;
-			letter-spacing: 1px;
-		}
-
-		.close {
-			top: 24px;
-			right: 28px;
-		}
-
-		.prev {
-			left: 28px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.next {
-			right: 28px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		.lightbox button:hover {
-			text-decoration: underline;
-			text-underline-offset: 4px;
 		}
 
 		@media (max-width: 680px) {
@@ -189,28 +123,6 @@
 			.gallery {
 				grid-template-columns: repeat(auto-fill, 291px);
 			}
-
-			.lightbox {
-				padding: 20px;
-			}
-
-			.lightbox img {
-				max-width: calc(100vw - 40px);
-				max-height: calc(100vh - 80px);
-			}
-
-			.prev {
-				left: 16px;
-			}
-
-			.next {
-				right: 16px;
-			}
-
-			.close {
-				top: 16px;
-				right: 18px;
-			}
 		}
 	</style>
 </head>
@@ -220,7 +132,7 @@
 	<main class="page">
 
 		<header>
-			<h1>ORIENTALISM</h1>
+			<h1>H&amp;M&amp;C</h1>
 
 			<nav>
 				<a href="/map/portfolio/photography/portraits/concepts/">
@@ -230,137 +142,22 @@
 		</header>
 
 		<p class="intro">
-			A visual study of image, gaze and the construction of the exotic.
+			A portrait series exploring character, atmosphere and visual form.
 		</p>
 
-		<section class="gallery" aria-label="Orientalism photographs">
+		<section class="gallery" aria-label="H&M&C categories">
 
+			<!-- 01. ORIENTALISM -->
 			<figure>
-				<button type="button" class="image-button" data-index="0">
-					<img src="orientalism-01.jpg" alt="Orientalism 01">
+				<a href="orientalism/">
+					<img src="orientalism.png" alt="Orientalism">
 					<figcaption>01. ORIENTALISM</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="1">
-					<img src="orientalism-02.jpg" alt="Orientalism 02">
-					<figcaption>02. ORIENTALISM</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="2">
-					<img src="orientalism-03.jpg" alt="Orientalism 03">
-					<figcaption>03. ORIENTALISM</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="3">
-					<img src="orientalism-04.jpg" alt="Orientalism 04">
-					<figcaption>04. ORIENTALISM</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="4">
-					<img src="orientalism-05.jpg" alt="Orientalism 05">
-					<figcaption>05. ORIENTALISM</figcaption>
-				</button>
-			</figure>
-
-			<figure>
-				<button type="button" class="image-button" data-index="5">
-					<img src="orientalism-06.jpg" alt="Orientalism 06">
-					<figcaption>06. ORIENTALISM</figcaption>
-				</button>
+				</a>
 			</figure>
 
 		</section>
 
 	</main>
-
-	<div class="lightbox" id="lightbox" aria-hidden="true">
-		<button type="button" class="close" id="close">CLOSE</button>
-		<button type="button" class="prev" id="prev">PREV</button>
-		<img id="lightbox-image" src="" alt="">
-		<button type="button" class="next" id="next">NEXT</button>
-	</div>
-
-	<script>
-		const images = [
-			"orientalism-01.jpg",
-			"orientalism-02.jpg",
-			"orientalism-03.jpg",
-			"orientalism-04.jpg",
-			"orientalism-05.jpg",
-			"orientalism-06.jpg"
-		];
-
-		const buttons = document.querySelectorAll(".image-button");
-		const lightbox = document.getElementById("lightbox");
-		const lightboxImage = document.getElementById("lightbox-image");
-		const closeButton = document.getElementById("close");
-		const prevButton = document.getElementById("prev");
-		const nextButton = document.getElementById("next");
-
-		let currentIndex = 0;
-
-		function showImage(index) {
-			currentIndex = (index + images.length) % images.length;
-			lightboxImage.src = images[currentIndex];
-			lightboxImage.alt = "Orientalism " + String(currentIndex + 1).padStart(2, "0");
-			lightbox.classList.add("is-open");
-			lightbox.setAttribute("aria-hidden", "false");
-			document.body.style.overflow = "hidden";
-		}
-
-		function closeLightbox() {
-			lightbox.classList.remove("is-open");
-			lightbox.setAttribute("aria-hidden", "true");
-			lightboxImage.src = "";
-			document.body.style.overflow = "";
-		}
-
-		buttons.forEach((button) => {
-			button.addEventListener("click", () => {
-				showImage(Number(button.dataset.index));
-			});
-		});
-
-		closeButton.addEventListener("click", closeLightbox);
-
-		prevButton.addEventListener("click", () => {
-			showImage(currentIndex - 1);
-		});
-
-		nextButton.addEventListener("click", () => {
-			showImage(currentIndex + 1);
-		});
-
-		lightbox.addEventListener("click", (event) => {
-			if (event.target === lightbox) {
-				closeLightbox();
-			}
-		});
-
-		document.addEventListener("keydown", (event) => {
-			if (!lightbox.classList.contains("is-open")) return;
-
-			if (event.key === "Escape") {
-				closeLightbox();
-			}
-
-			if (event.key === "ArrowLeft") {
-				showImage(currentIndex - 1);
-			}
-
-			if (event.key === "ArrowRight") {
-				showImage(currentIndex + 1);
-			}
-		});
-	</script>
 
 </body>
 </html>
