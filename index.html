@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
@@ -18,7 +18,6 @@
     .hover-text { position: absolute; top: 50%; left: 50%; width: 100%; color: #fff; font-size: clamp(28px, 4vw, 48px); letter-spacing: 2px; text-align: center; text-shadow: 0 0 10px #000; opacity: 0; pointer-events: none; transform: translate(-50%, -50%); transition: opacity .3s ease; }
     .frame-link:hover .hover-text { opacity: 1; }
     
-    /* 아이맥 스타일 팝업 (NOT YET) */
     .ready-popup { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.38); backdrop-filter: blur(4px); }
     .ready-popup.show { display: flex; animation: fade-in .35s ease both; }
     .mac-popup-card { width: min(340px, 80vw); background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.45); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -32,7 +31,7 @@
     .mac-content { padding: 46px 20px; color: #171717; font-size: clamp(18px, 2.8vw, 24px); font-weight: bold; letter-spacing: 3px; text-align: center; }
 
     #cookieScreen { position: absolute; inset: 0; z-index: 1; display: none; overflow: hidden; flex-direction: column; justify-content: center; align-items: center; gap: 28px; background: #000; }
-    #cookieScreen::before { position: absolute; inset: 0; z-index: 0; content: ''; background: url('geminibg.jpg') center / cover no-repeat; opacity: 0; filter: blur(4px); transform: translateY(18px) scale(.98); transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease; }
+    #cookieScreen::before { position: absolute; inset: 0; z-index: 0; content: ''; background: url('/geminibg.jpg') center / cover no-repeat; opacity: 0; filter: blur(4px); transform: translateY(18px) scale(.98); transition: opacity 1.2s ease, filter 1.2s ease, transform 1.2s ease; }
     #cookieScreen.sky-background::before { opacity: 1; filter: blur(0); transform: none; }
     .cookie-image, .cookie-actions { position: relative; z-index: 1; }
     .cookie-image { cursor: pointer; }
@@ -53,7 +52,6 @@
     @keyframes piece-three { to { transform: translate(-30px,44px) rotate(13deg); opacity: .78; } }
     @keyframes piece-four { to { transform: translate(42px,38px) rotate(-15deg); opacity: .78; } }
     
-    /* 글씨 자체만 부드럽게 블러 처리 */
     .cookie-actions { display: flex; flex-direction: column; gap: 10px; align-items: center; min-height: 120px; }
     .or-text { color: rgba(255, 255, 255, 0.7); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin: 4px 0; }
     .cookie-action { padding: 12px 24px; border: none; background: transparent; color: #fff; letter-spacing: 2px; cursor: pointer; outline: none; transition: filter 0.3s ease, opacity 0.3s ease; }
@@ -128,7 +126,8 @@
     const modalContent = $('#modalContent');
     const popupContents = {
       'star-one': '<div class="profile-content"><h2>STAR I THE BEGINNING</h2><p>suann, Based in Incheon and Seoul, Korea</p><p>- photography<br>- design</p><p>contact.</p><p>- email: <a href="mailto:ahnsuann@kakao.com">ahnsuann@kakao.com</a><br>- instagram: <a href="https://instagram.com/museionworks" target="_blank" rel="noopener noreferrer">@museionworks</a></p></div>',
-      'star-two': '<div class="profile-content"><h2>STAR II THE CROSSING</h2><p><a href="/map/portfolio/" style="text-decoration: underline; text-underline-offset: 4px;">PORTFOLIO</a></p></div>',
+      /* 포트폴리오 새 창 띄우기 target="_blank" 적용 */
+      'star-two': '<div class="profile-content"><h2>STAR II THE CROSSING</h2><p><a href="/map/portfolio/" target="_blank" style="text-decoration: underline; text-underline-offset: 4px;">PORTFOLIO</a></p></div>',
       'star-three': '<div class="profile-content"><h2>STAR III THE CHOICE</h2><p>THE CHOICE IS YOURS.</p></div>',
       'star-four': '<div class="profile-content"><h2>STAR IV THE DESTINY</h2><div class="password-lock"><div style="display:flex; flex-direction:column; gap:4px;"><p class="password-subtitle">수안의 생일 여섯자리를 입력해주세요.</p><p class="password-question">When is suann\'s birthday? Enter the 6digit number.</p></div><div class="password-form"><input class="password-input" type="password" inputmode="numeric" maxlength="6" placeholder="000000" aria-label="Password input"><button class="password-button" type="button">ENTER</button></div><div class="wrong-feedback" aria-live="polite"></div><div class="secret-panel"><p>Personal Blog: <a href="https://blog.naver.com/ahnsuann" target="_blank" rel="noopener noreferrer">@ahnsuann</a></p><p>Personal Instagram: <a href="https://www.instagram.com/newan9el/" target="_blank" rel="noopener noreferrer">@newan9el</a></p></div></div></div>'
     };
