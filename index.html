@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <link rel="icon" href="/favicon.png" type="image/png">
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUANN・遂安</title>
+  <link rel="icon" href="/favicon.png" type="image/png">
   <style>
     * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
@@ -24,7 +23,7 @@
     .envelope-container:hover { transform: scale(1.06); }
     .envelope-container img { display: block; width: min(120px, 25vw); height: auto; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15)); }
 
-    /* 편지봉투 클릭 시 latterpaper.jpg가 배경으로 뜨는 편지지 팝업 */
+    /* latterpaper.jpg가 배경으로 뜨는 편지지 팝업 */
     .letter-popup { position: fixed; inset: 0; z-index: 60; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.5); backdrop-filter: blur(6px); }
     .letter-popup.show { display: flex; animation: fade-in 0.35s ease both; }
     .letter-card { position: relative; width: min(520px, 90vw); aspect-ratio: 3 / 4; background: url('latterpaper.jpg') center / cover no-repeat; border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); overflow: hidden; transform: translateY(16px) scale(0.94); transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1); border: 1px solid rgba(0,0,0,0.15); }
