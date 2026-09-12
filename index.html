@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>suann</title>
+  <title>Ahn Suann Portfolio</title>
   <style>
     * { box-sizing: border-box; font-family: Helvetica, Arial, sans-serif; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #000; }
@@ -88,7 +88,7 @@
 <body>
   <main id="mainScreen"><div class="frame-container">
     <a href="/open" class="frame-link" id="museionBtn"><img src="museionworks.png?v=3" alt="Museion Works Frame"><span class="hover-text">MUSEION<br>WORKS</span></a>
-    <a href="/open/map" class="frame-link" id="suannBtn"><img src="suannpf.png?v=3" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
+    <a href="/map" class="frame-link" id="suannBtn"><img src="suannpf.png?v=3" alt="Silver Frame"><span class="hover-text">SUANN</span></a>
   </div></main>
   
   <div class="ready-popup" id="readyPopup" aria-live="assertive">
@@ -152,7 +152,7 @@
     
     $('#suannBtn').addEventListener('click', (event) => { 
       event.preventDefault(); 
-      history.pushState(null, '', '/open/map');
+      history.pushState(null, '', '/map');
       mainScreen.classList.add('melt'); 
       cookieImage.classList.remove('breaking'); 
       fateImage.classList.remove('revealed'); 
